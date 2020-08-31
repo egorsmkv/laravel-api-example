@@ -80,8 +80,8 @@ return [
             ],
             \BeyondCode\SelfDiagnosis\Checks\PhpExtensionsAreInstalled::class => [
                 'extensions' => [
-                    'phpiredis',
-                    'swoole',
+                  //  'phpiredis',
+                  //  'swoole',
                 ],
             ],
             \BeyondCode\SelfDiagnosis\Checks\RoutesAreCached::class,
