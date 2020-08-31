@@ -58,3 +58,8 @@ opcache.interned_strings_buffer=16
 opcache.fast_shutdown=1
 opcache.dups_fix=1
 ```
+
+#### Installing on a CentOS server
+
+Look those instructions: https://github.com/egorsmkv/useful-stuff/tree/master/centos7-bootstrap
+
