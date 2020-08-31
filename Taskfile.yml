@@ -63,6 +63,7 @@ tasks:
       - echo "Initializing..."
       - task: copy_dev_env
       - task: pre_init
+      - php artisan telescope:publish
       - task: migrate
       - task: clear_dev
       - php artisan self-diagnosis --env=local
