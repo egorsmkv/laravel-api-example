@@ -1,0 +1,120 @@
+version: '3'
+
+tasks:
+  build_docs:
+    dir: resources/docs
+    cmds:
+      - mkdocs build --clean
+
+  remove_old_docs:
+    cmds:
+      - rm -rf ./public/docs
+
+  move_new_docs:
+    cmds:
+      - mv resources/docs/site ./public/docs
+
+  copy_docs_assets:
+    cmds:
+      - cp -r public/docs/css/* public/css
+      - cp -r public/docs/js/* public/js
+      - cp -r public/docs/img/* public/img
+      - cp -r public/docs/fonts/* public/fonts
+
+  docs:
+    cmds:
+      - task: build_docs
+      - task: remove_old_docs
+      - task: move_new_docs
+      - task: copy_docs_assets
+
+  install_deps:
+    cmds:
+      - php composer.phar install
+
+  code_style:
+    cmds:
+      - ./vendor/bin/psalm
+      - php artisan code:analyse
+      - php artisan check:all
+
+  pre_init:
+    cmds:
+      - echo "Installing dependencies..."
+      - task: install_deps
+      - echo "Preinitializing..."
+      - php artisan storage:link
+      - php artisan key:generate --force
+      - php artisan jwt:secret --force
+      - php artisan package:discover --ansi
+
+  copy_dev_env:
+    cmds:
+      - cp -n .env.example .env
+    ignore_error: true
+
+  copy_prod_env:
+    cmds:
+      - cp -n .env.prod.example .env
+    ignore_error: true
+
+  init_dev:
+    cmds:
+      - echo "Initializing..."
+      - task: copy_dev_env
+      - task: pre_init
+      - task: migrate
+      - task: clear_dev
+      - php artisan self-diagnosis --env=local
+
+  init_prod:
+    cmds:
+      - echo "Initializing..."
+      - task: copy_prod_env
+      - task: pre_init
+      - task: clear_prod
+      - composer dump-autoload --optimize
+      - task: cache_prod
+      - task: migrate
+      - php artisan self-diagnosis --env=prod
+
+  cache:
+    cmds:
+      - echo "Caching..."
+      - php artisan optimize
+      - php artisan view:cache
+      - php artisan route:cache
+      - php artisan event:cache
+      - php artisan config:cache
+
+  clear:
+    cmds:
+      - echo "Clearing..."
+      - php artisan cache:clear
+      - php artisan view:clear
+      - php artisan route:clear
+      - php artisan event:clear
+      - php artisan config:clear
+      - php artisan optimize:clear
+
+  clear_dev:
+    cmds:
+      - echo "Caching development..."
+      - task: clear
+      - php artisan telescope:clear
+
+  cache_prod:
+    cmds:
+      - echo "Caching production..."
+      - task: cache
+      - php artisan opcache:compile --force
+
+  clear_prod:
+    cmds:
+      - echo "Clearing production..."
+      - task: clear
+      - php artisan opcache:clear
+
+  migrate:
+    cmds:
+      - php artisan migrate --force

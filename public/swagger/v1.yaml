@@ -1,0 +1,83 @@
+openapi: 3.0.0
+
+info:
+    title: API service based on Laravel
+    description: This is the Swagger interface describing our API.
+    version: 1.0.0
+
+servers:
+    -   url: http://localhost:8000/api/v1
+        description: Development Server
+
+paths:
+    /articles:
+        get:
+            summary: Returns a list of articles.
+            responses:
+                '200':
+                    description: A JSON array of articles
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+    /articles/{id}:
+        get:
+            summary: Returns an article.
+            parameters:
+                -   name: id
+                    in: path
+                    required: true
+                    description: An ID of the article
+                    schema:
+                        type: integer
+                        format: int64
+                        minimum: 1
+            responses:
+                '200':
+                    description: A JSON response
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+    /articles/by-tag/{slug}:
+        get:
+            summary: Returns a list of articles with a tag
+            parameters:
+                -   name: slug
+                    in: path
+                    required: true
+                    description: A slug of the tag
+                    schema:
+                        type: string
+            responses:
+                '200':
+                    description: A JSON response
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+    /articles/by-author/{slug}:
+        get:
+            summary: Returns a list of articles of an author
+            parameters:
+                -   name: slug
+                    in: path
+                    required: true
+                    description: A slug of the tag
+                    schema:
+                        type: string
+            responses:
+                '200':
+                    description: A JSON response
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
