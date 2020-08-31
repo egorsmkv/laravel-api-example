@@ -10,10 +10,10 @@
 ### Documentation & Swagger
 
 Documentation:
-- You can find it here: http://127.0.0.1:8000/docs
+- You can find it here: http://127.0.0.1:8000/docs/
 
 Swagger:
-- You can find it here: http://127.0.0.1:8000/api/v1/swagger
+- You can find it here: http://127.0.0.1:8000/api/v1/swagger/
 
 ### Development
 
