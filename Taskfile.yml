@@ -74,7 +74,7 @@ tasks:
       - task: copy_prod_env
       - task: pre_init
       - task: clear_prod
-      - composer dump-autoload --optimize
+      - php composer.phar dump-autoload --optimize
       - task: cache_prod
       - task: migrate
       - php artisan self-diagnosis --env=prod
