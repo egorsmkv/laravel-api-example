@@ -2,7 +2,7 @@
 
 ### Included
 
-- Laravel 7
+- Laravel using Lucid Architecture
     - Code style checker: Psalm, Larastan
 - Documentation based on `mkdocs`
 - Swagger
