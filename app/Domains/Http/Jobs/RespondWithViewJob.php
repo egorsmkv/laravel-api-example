@@ -8,18 +8,25 @@ use Illuminate\Routing\ResponseFactory;
 
 class RespondWithViewJob extends Job
 {
+    /** @var int $status */
     protected $status;
+
+    /** @var array<string, mixed> $data */
     protected $data;
+
+    /** @var array<string, string> $headers */
     protected $headers;
+
+    /** @var string $template */
     protected $template;
 
     /**
      * RespondWithViewJob constructor.
      *
      * @param string $template
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param int $status
-     * @param array $headers
+     * @param array<string, string> $headers
      */
     public function __construct(string $template, $data = [], $status = 200, array $headers = [])
     {

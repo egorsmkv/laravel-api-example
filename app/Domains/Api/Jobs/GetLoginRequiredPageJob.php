@@ -9,6 +9,7 @@ use Lucid\Foundation\Job;
 
 class GetLoginRequiredPageJob extends Job
 {
+    /** @var PrettyResponse $response */
     private $response;
 
     public function __construct()
@@ -19,6 +20,9 @@ class GetLoginRequiredPageJob extends Job
         $this->response = new PrettyResponse($manager);
     }
 
+    /**
+     * @return mixed
+     */
     public function handle()
     {
         return $this->response

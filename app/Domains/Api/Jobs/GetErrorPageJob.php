@@ -12,9 +12,14 @@ class GetErrorPageJob extends Job
     /** @var PrettyResponse $response */
     private $response;
 
-    /** @var array $data */
+    /** @var array<string, mixed> $data */
     private $data;
 
+    /**
+     * GetErrorPageJob constructor.
+     *
+     * @param array<string, mixed> $data
+     */
     public function __construct(array $data)
     {
         $manager = new Manager();
@@ -24,6 +29,9 @@ class GetErrorPageJob extends Job
         $this->data = $data;
     }
 
+    /**
+     * @return mixed
+     */
     public function handle()
     {
         $code = $this->data['code'];

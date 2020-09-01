@@ -7,6 +7,11 @@ use Lucid\Foundation\Feature;
 
 class GetNotFoundPageFeature extends Feature
 {
+    /**
+     * Handle response for 404 page
+     *
+     * @return mixed
+     */
     public function handle()
     {
         return $this->run(new GetNotFoundPageJob());

@@ -18,7 +18,7 @@ class User extends Authenticatable implements JWTSubject
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
@@ -29,7 +29,7 @@ class User extends Authenticatable implements JWTSubject
     /**
      * The attributes that should be hidden for arrays.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -49,7 +49,7 @@ class User extends Authenticatable implements JWTSubject
     /**
      * Return a key value array, containing any custom claims to be added to the JWT.
      *
-     * @return array
+     * @return array<string, string>
      */
     public function getJWTCustomClaims()
     {

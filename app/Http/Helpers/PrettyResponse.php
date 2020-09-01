@@ -14,8 +14,8 @@ class PrettyResponse extends AbstractResponse
     /**
      * Respond with an array.
      *
-     * @param array $array
-     * @param array $headers
+     * @param array<string, mixed> $array
+     * @param array<int, string> $headers
      * @param int $json_options
      *
      * @return mixed
@@ -39,7 +39,7 @@ class PrettyResponse extends AbstractResponse
      * @param LengthAwarePaginator $paginator
      * @param callable|TransformerAbstract $transformer
      * @param string|null $resourceKey
-     * @param array $meta
+     * @param array<string, mixed> $meta
      *
      * @return ResponseFactory
      */

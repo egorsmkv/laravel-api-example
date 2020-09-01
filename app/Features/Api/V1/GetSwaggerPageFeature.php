@@ -7,6 +7,11 @@ use Lucid\Foundation\Feature;
 
 class GetSwaggerPageFeature extends Feature
 {
+    /**
+     * Handle response for Swagger page
+     *
+     * @return mixed
+     */
     public function handle()
     {
         $url = asset(config('swagger.v1'));

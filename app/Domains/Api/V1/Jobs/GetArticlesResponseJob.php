@@ -4,6 +4,7 @@ namespace App\Domains\Api\V1\Jobs;
 
 use App\Data\Transformers\Api\ArticleTransformer;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Http\JsonResponse;
 use Lucid\Foundation\Job;
 
 class GetArticlesResponseJob extends Job
@@ -16,6 +17,9 @@ class GetArticlesResponseJob extends Job
         $this->data = $data;
     }
 
+    /**
+     * @return JsonResponse
+     */
     public function handle()
     {
         return fractal($this->data, new ArticleTransformer())

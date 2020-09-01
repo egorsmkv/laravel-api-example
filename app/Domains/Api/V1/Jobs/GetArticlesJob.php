@@ -15,6 +15,10 @@ class GetArticlesJob extends Job
     /** @var int[] Allowed items per page */
     private $allowItemsPerPage = [self::DEFAULT_ITEMS_PER_PAGE, 20, 30, 40, 50];
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function handle(Request $request)
     {
         $perPage = (new PerPageHelper($request, $this->allowItemsPerPage))->get();

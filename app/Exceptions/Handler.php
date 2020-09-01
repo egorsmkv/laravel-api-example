@@ -19,7 +19,7 @@ class Handler extends ExceptionHandler
     /**
      * A list of the exception types that should not be reported.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $dontReport = [
         AuthenticationException::class,
@@ -106,19 +106,19 @@ class Handler extends ExceptionHandler
      * Convert an authentication exception into an unauthenticated response.
      *
      * @param mixed $request
-     * @param AuthenticationException $e
+     * @param AuthenticationException $exception
      *
      * @return mixed
      *
      * @throws Throwable
      */
-    protected function unauthenticated($request, AuthenticationException $e)
+    protected function unauthenticated($request, AuthenticationException $exception)
     {
         if (config('app.errors_as_json')) {
             $parameters = [
                 'data' => [
                     'code' => 401,
-                    'message' => $e->getMessage(),
+                    'message' => $exception->getMessage(),
                     'url' => $request->getUri(),
                     'version' => 'unknown'
                 ]
@@ -127,6 +127,6 @@ class Handler extends ExceptionHandler
             return app()->call('App\Http\Controllers\ErrorsController@process', $parameters);
         }
 
-        return parent::render($request, $e);
+        return parent::render($request, $exception);
     }
 }

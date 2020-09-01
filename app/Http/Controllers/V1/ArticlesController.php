@@ -7,6 +7,11 @@ use Lucid\Foundation\Http\Controller;
 
 class ArticlesController extends Controller
 {
+    /**
+     * Show "articles" endpoint
+     *
+     * @return mixed
+     */
     public function index()
     {
         return $this->serve(GetArticlesFeature::class);

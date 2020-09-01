@@ -13,14 +13,14 @@ class PerPageHelper
     /** @var Request $request */
     private $request;
 
-    /** @var array Allowed items of "per page" */
+    /** @var array<int, int> Allowed items of "per page" */
     private $allowed = [];
 
     /**
      * PerPageHelper constructor.
      *
      * @param Request $request
-     * @param array $allowed
+     * @param array<int, int> $allowed
      */
     public function __construct(Request $request, array $allowed)
     {

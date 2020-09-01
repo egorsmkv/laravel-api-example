@@ -67,7 +67,7 @@ tasks:
       - ./vendor/bin/psalm
       - ./vendor/bin/phpmd app text phpmd-ruleset.xml
       - task: phpcs
-      - php artisan code:analyse
+      - ./vendor/bin/phpstan analyse --memory-limit=2G
       - task: laravel_microscope
     ignore_error: true
 

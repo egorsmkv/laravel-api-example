@@ -8,6 +8,11 @@ use Lucid\Foundation\Feature;
 
 class GetArticlesFeature extends Feature
 {
+    /**
+     * Handle response for "articles" endpoint page
+     *
+     * @return mixed
+     */
     public function handle()
     {
         $articles = $this->run(new GetArticlesJob());
