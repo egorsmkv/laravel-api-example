@@ -5,18 +5,22 @@
 - Laravel using Lucid Architecture
     - Code style checkers: Psalm, Larastan, PHPMD, PHP CodeSniffer
     - Cross-Origin Resource Sharing (CORS)
+- Laravel Telescope
 - Documentation based on `mkdocs`
+- Sentry
+- API responses based on Laravel Fractal
+- JWT authentication
+- Logs viewer
 - Swagger
 
-### Documentation & Swagger
+### Useful links
 
-Documentation:
-- You can find it here: http://127.0.0.1:8000/docs/
-
-Swagger:
-- You can find it here: http://127.0.0.1:8000/api/v1/swagger/
+Documentation: http://127.0.0.1:8000/docs/
+Swagger: http://127.0.0.1:8000/api/v1/swagger/
 
 ### Development
+
+What is `task`? It is: https://taskfile.dev
 
 Init:
 
@@ -63,4 +67,3 @@ opcache.dups_fix=1
 #### Installing on a CentOS server
 
 Look those instructions: https://github.com/egorsmkv/useful-stuff/tree/master/centos7-bootstrap
-

@@ -4,61 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9af251c748a01124305b35aa8d357201",
+    "content-hash": "212469662609dd7024c57936411669a1",
     "packages": [
-        {
-            "name": "appstract/laravel-meta",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/appstract/laravel-meta.git",
-                "reference": "d19034c03cca7c2c30513a5977312f2aceb5bc75"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/appstract/laravel-meta/zipball/d19034c03cca7c2c30513a5977312f2aceb5bc75",
-                "reference": "d19034c03cca7c2c30513a5977312f2aceb5bc75",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Appstract\\Meta\\MetaServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Appstract\\Meta\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Gijs Jorissen",
-                    "email": "hello@appstract.team",
-                    "homepage": "https://appstract.team",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Model meta",
-            "homepage": "https://github.com/appstract/laravel-meta",
-            "keywords": [
-                "appstract",
-                "laravel-meta"
-            ],
-            "time": "2020-02-04T20:48:50+00:00"
-        },
         {
             "name": "appstract/laravel-opcache",
             "version": "3.2.1",
@@ -1664,65 +1611,6 @@
             "time": "2020-06-23T06:23:06+00:00"
         },
         {
-            "name": "kalnoy/nestedset",
-            "version": "v5.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lazychaser/laravel-nestedset.git",
-                "reference": "d4fe17f9abd3414014bda32a5612c9ed24246f99"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/d4fe17f9abd3414014bda32a5612c9ed24246f99",
-                "reference": "d4fe17f9abd3414014bda32a5612c9ed24246f99",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "~5.7.0|~5.8.0|^6.0|^7.0",
-                "illuminate/events": "~5.7.0|~5.8.0|^6.0|^7.0",
-                "illuminate/support": "~5.7.0|~5.8.0|^6.0|^7.0",
-                "php": ">=7.1.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "7.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "v5.0.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Kalnoy\\Nestedset\\NestedSetServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Kalnoy\\Nestedset\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alexander Kalnoy",
-                    "email": "lazychaser@gmail.com"
-                }
-            ],
-            "description": "Nested Set Model for Laravel 5.7 and up",
-            "keywords": [
-                "database",
-                "hierarchy",
-                "laravel",
-                "nested sets",
-                "nsm"
-            ],
-            "time": "2020-03-04T05:33:20+00:00"
-        },
-        {
             "name": "laravel/framework",
             "version": "v5.8.38",
             "source": {
@@ -2404,62 +2292,6 @@
                 "token"
             ],
             "time": "2016-12-05T07:27:31+00:00"
-        },
-        {
-            "name": "neomerx/json-api",
-            "version": "v4.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/neomerx/json-api.git",
-                "reference": "0e45254a4574a3118e0ed663312b43aca23b89c7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/neomerx/json-api/zipball/0e45254a4574a3118e0ed663312b43aca23b89c7",
-                "reference": "0e45254a4574a3118e0ed663312b43aca23b89c7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.14",
-                "mockery/mockery": "^1.0",
-                "phpmd/phpmd": "^2.6",
-                "phpunit/phpunit": "^7.0",
-                "scrutinizer/ocular": "^1.4",
-                "squizlabs/php_codesniffer": "^2.9"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Neomerx\\JsonApi\\": "src/"
-                },
-                "files": [
-                    "src/I18n/format.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "neomerx",
-                    "email": "info@neomerx.com"
-                }
-            ],
-            "description": "Framework agnostic JSON API (jsonapi.org) implementation",
-            "homepage": "https://github.com/neomerx/json-api",
-            "keywords": [
-                "JSON-API",
-                "api",
-                "json",
-                "jsonapi",
-                "jsonapi.org",
-                "neomerx"
-            ],
-            "time": "2020-03-03T05:56:54+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -7542,16 +7374,16 @@
         },
         {
             "name": "imanghafoori/laravel-microscope",
-            "version": "v1.0.120",
+            "version": "v1.0.121",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imanghafoori1/laravel-microscope.git",
-                "reference": "b087c6c5e47279aa660c7a9bd54a41b0b7c442a4"
+                "reference": "9b434e478fd54dd5e5d644103a8704d100663341"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imanghafoori1/laravel-microscope/zipball/b087c6c5e47279aa660c7a9bd54a41b0b7c442a4",
-                "reference": "b087c6c5e47279aa660c7a9bd54a41b0b7c442a4",
+                "url": "https://api.github.com/repos/imanghafoori1/laravel-microscope/zipball/9b434e478fd54dd5e5d644103a8704d100663341",
+                "reference": "9b434e478fd54dd5e5d644103a8704d100663341",
                 "shasum": ""
             },
             "require": {
@@ -7595,7 +7427,7 @@
                 "laravel-microscope",
                 "laravel-testing"
             ],
-            "time": "2020-09-01T13:56:02+00:00"
+            "time": "2020-09-01T14:11:05+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -11561,7 +11393,17 @@
     "prefer-lowest": false,
     "platform": {
         "php": ">=7.1.3",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-zip": "*",
+        "ext-mbstring": "*",
+        "ext-iconv": "*",
+        "ext-fileinfo": "*",
+        "ext-gd": "*",
+        "ext-ctype": "*",
+        "ext-filter": "*",
+        "ext-openssl": "*",
+        "ext-intl": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
