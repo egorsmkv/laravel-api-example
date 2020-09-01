@@ -48,6 +48,7 @@ tasks:
   laravel_microscope:
     env:
       TELESCOPE_ENABLED: false
+      LOG_VIEWER_ENABLED: false
     cmds:
       - php artisan check:events
       - php artisan check:gates

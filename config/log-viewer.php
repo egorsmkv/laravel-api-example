@@ -49,7 +49,7 @@ return [
      */
 
     'route'         => [
-        'enabled'    => true,
+        'enabled'    => env('LOG_VIEWER_ENABLED', false),
 
         'attributes' => [
             'prefix'     => 'logs',

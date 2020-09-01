@@ -9,7 +9,10 @@ use Lucid\Foundation\Job;
 
 class GetErrorPageJob extends Job
 {
+    /** @var PrettyResponse $response */
     private $response;
+
+    /** @var array $data */
     private $data;
 
     public function __construct(array $data)

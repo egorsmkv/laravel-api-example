@@ -85,7 +85,7 @@ class Handler extends ExceptionHandler
             }
 
             return app()->call('App\Http\Controllers\ErrorsController@process', $parameters);
-        } else if ($e instanceof Throwable) {
+        } else if ($e->getCode() !== 0) {
             $parameters = [
                 'data' => [
                     'code' => 500,

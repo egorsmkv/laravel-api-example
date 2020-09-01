@@ -8,6 +8,7 @@ use Lucid\Foundation\Job;
 
 class GetArticlesResponseJob extends Job
 {
+    /** @var LengthAwarePaginator $data */
     private $data;
 
     public function __construct(LengthAwarePaginator $data)

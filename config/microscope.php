@@ -6,5 +6,7 @@ return [
      */
     'ignore' => [
         'config/telescope.php',
+        'resources/views/vendor/**/*',
+        'vendor/arcanedev/log-viewer/**/*',
     ],
 ];

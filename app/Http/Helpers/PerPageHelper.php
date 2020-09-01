@@ -46,7 +46,7 @@ class PerPageHelper
             return $first;
         }
 
-        $page = abs($page);
+        $page = (int)abs($page);
 
         if (!in_array($page, $this->allowed)) {
             return $first;
