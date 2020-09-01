@@ -15,11 +15,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->isProduction()) {
+        if (config('app.env') === 'production') {
             $this->app->register(OpcacheServiceProvider::class);
         }
 
-        if ($this->app->isLocal()) {
+        if (config('app.env') === 'local') {
             $this->app->register(TelescopeServiceProviderBase::class);
             $this->app->register(TelescopeServiceProvider::class);
         }
