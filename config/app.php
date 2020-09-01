@@ -166,7 +166,6 @@ return [
 
         Laravel\Tinker\TinkerServiceProvider::class,
         EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider::class,
-        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         /*

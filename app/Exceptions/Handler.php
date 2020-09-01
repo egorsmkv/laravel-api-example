@@ -2,7 +2,8 @@
 
 namespace App\Exceptions;
 
-use Exception;
+use Illuminate\Support\Arr;
+use Throwable;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -34,11 +35,11 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param Exception $exception
+     * @param Throwable $exception
+     *
      * @return void
-     * @throws Exception
      */
-    public function report(Exception $exception)
+    public function report(Throwable $exception)
     {
         if (app()->bound('sentry') && $this->shouldReport($exception)) {
             app('sentry')->captureException($exception);
@@ -51,17 +52,25 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param mixed $request
-     * @param Exception $e
+     * @param Throwable $e
      *
      * @return mixed
+     *
+     * @throws Throwable
      */
-    public function render($request, Exception $e)
+    public function render($request, Throwable $e)
     {
         $requestURI = $request->getRequestUri();
 
         if ($e instanceof HttpException) {
+            $headers = $e->getHeaders();
+            $isBasicHttpAuth = Arr::has($headers, 'WWW-Authenticate');
             $code = (string)$e->getStatusCode();
             $message = (new Httpstatus())->getReasonPhrase($code);
+
+            if ($isBasicHttpAuth) {
+                return parent::render($request, $e);
+            }
 
             $parameters = [
                 'data' => [
@@ -76,7 +85,7 @@ class Handler extends ExceptionHandler
             }
 
             return app()->call('App\Http\Controllers\ErrorsController@process', $parameters);
-        } else if ($e instanceof Exception) {
+        } else if ($e instanceof Throwable) {
             $parameters = [
                 'data' => [
                     'code' => 500,

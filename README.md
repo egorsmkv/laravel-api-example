@@ -16,6 +16,7 @@
 ### Useful links
 
 - Documentation: http://127.0.0.1:8000/docs/
+- Log Viewer: http://127.0.0.1:8000/logs/
 - Swagger: http://127.0.0.1:8000/api/v1/swagger/
 
 ### Development
