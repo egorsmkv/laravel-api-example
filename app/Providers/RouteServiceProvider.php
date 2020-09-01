@@ -17,18 +17,6 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-
-        parent::boot();
-    }
-
-    /**
      * Define the routes for the application.
      *
      * @return void
@@ -36,10 +24,7 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapWebRoutes();
-
         $this->mapApiRoutes();
-
-        //
     }
 
     /**
@@ -51,10 +36,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::group([
-            'middleware' => 'web',
-            'namespace' => $this->namespace,
-        ], function ($router) {
+        Route::namespace($this->namespace)->middleware(['web'])->group(function () {
+            /** @noinspection PhpIncludeInspection */
             require base_path('routes/web.php');
         });
     }
@@ -68,11 +51,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::group([
-            'middleware' => 'api',
-            'namespace' => $this->namespace,
-            'prefix' => 'api',
-        ], function ($router) {
+        Route::namespace($this->namespace)->prefix('/api')->middleware(['api'])->group(function () {
+            /** @noinspection PhpIncludeInspection */
             require base_path('routes/api.php');
         });
     }

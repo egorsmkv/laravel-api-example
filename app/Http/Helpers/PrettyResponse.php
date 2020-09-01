@@ -5,7 +5,6 @@ namespace App\Http\Helpers;
 use EllipseSynergie\ApiResponse\AbstractResponse;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\Routing\ResponseFactory;
-use Illuminate\Contracts\Validation\Validator;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Collection;
 use League\Fractal\TransformerAbstract;
@@ -13,11 +12,17 @@ use League\Fractal\TransformerAbstract;
 class PrettyResponse extends AbstractResponse
 {
     /**
+     * Respond with an array.
+     *
      * @param array $array
      * @param array $headers
-     * @param int $json_options @link http://php.net/manual/en/function.json-encode.php
+     * @param int $json_options
      *
      * @return mixed
+     *
+     * @SuppressWarnings(PHPMD)
+     *
+     * @link http://php.net/manual/en/function.json-encode.php
      */
     public function withArray(array $array, array $headers = [], $json_options = 0)
     {
@@ -35,11 +40,12 @@ class PrettyResponse extends AbstractResponse
      * @param callable|TransformerAbstract $transformer
      * @param string|null $resourceKey
      * @param array $meta
+     *
      * @return ResponseFactory
      */
     public function withPaginator(LengthAwarePaginator $paginator, $transformer, $resourceKey = null, $meta = [])
     {
-        $queryParams = array_diff_key($_GET, array_flip(['page']));
+        $queryParams = array_diff_key(request()->all(), array_flip(['page']));
         $paginator->appends($queryParams);
 
         $resource = new Collection($paginator->items(), $transformer, $resourceKey);
@@ -52,16 +58,5 @@ class PrettyResponse extends AbstractResponse
         $rootScope = $this->manager->createData($resource);
 
         return $this->withArray($rootScope->toArray());
-    }
-
-    /**
-     * Generates a Response with a 400 HTTP header and a given message from validator
-     *
-     * @param Validator $validator
-     * @return ResponseFactory
-     */
-    public function errorWrongArgsValidator(Validator $validator)
-    {
-        return $this->errorWrongArgs($validator->getMessageBag()->toArray());
     }
 }

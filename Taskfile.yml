@@ -45,13 +45,29 @@ tasks:
       - ./vendor/bin/phpcs ./routes/*
     ignore_error: true
 
+  laravel_microscope:
+    env:
+      TELESCOPE_ENABLED: false
+    cmds:
+      - php artisan check:events
+      - php artisan check:gates
+      - php artisan check:routes
+      - php artisan check:views
+      - php artisan check:imports
+      - php artisan check:dd
+      - php artisan check:compact
+      - php artisan check:blade_queries
+      - php artisan check:bad_practices
+      - php artisan check:psr4
+    ignore_error: true
+
   code_style:
     cmds:
       - ./vendor/bin/psalm
       - ./vendor/bin/phpmd app text phpmd-ruleset.xml
       - task: phpcs
       - php artisan code:analyse
-      - php artisan check:all
+      - task: laravel_microscope
     ignore_error: true
 
   pre_init:

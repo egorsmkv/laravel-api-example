@@ -3,13 +3,15 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use App\Http\Controllers\ErrorsController;
+use Lukasoppermann\Httpstatus\Httpstatus;
 
 class Handler extends ExceptionHandler
 {
@@ -20,11 +22,11 @@ class Handler extends ExceptionHandler
      */
     protected $dontReport = [
         AuthenticationException::class,
-        \Illuminate\Auth\Access\AuthorizationException::class,
-        \Symfony\Component\HttpKernel\Exception\HttpException::class,
-        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
-        \Illuminate\Session\TokenMismatchException::class,
-        \Illuminate\Validation\ValidationException::class,
+        AuthorizationException::class,
+        HttpException::class,
+        ModelNotFoundException::class,
+        TokenMismatchException::class,
+        ValidationException::class,
     ];
 
     /**
@@ -48,7 +50,7 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param Request $request
+     * @param mixed $request
      * @param Exception $e
      *
      * @return mixed
@@ -58,11 +60,13 @@ class Handler extends ExceptionHandler
         $requestURI = $request->getRequestUri();
 
         if ($e instanceof HttpException) {
-            $code = $e->getStatusCode();
+            $code = (string)$e->getStatusCode();
+            $message = (new Httpstatus())->getReasonPhrase($code);
+
             $parameters = [
                 'data' => [
                     'code' => $code,
-                    'message' => Response::$statusTexts[$code],
+                    'message' => $message,
                     'version' => 'unknown'
                 ]
             ];
@@ -90,16 +94,22 @@ class Handler extends ExceptionHandler
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param Request $request
+     * @param mixed $request
      * @param AuthenticationException $exception
+     *
      * @return mixed
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        if ($request->expectsJson()) {
-            return app()->call('App\Http\Controllers\ErrorsController@loginRequired');
-        }
+        $parameters = [
+            'data' => [
+                'code' => 401,
+                'message' => $exception->getMessage(),
+                'url' => $request->getUri(),
+                'version' => 'unknown'
+            ]
+        ];
 
-        return redirect()->guest('login');
+        return app()->call('App\Http\Controllers\ErrorsController@process', $parameters);
     }
 }

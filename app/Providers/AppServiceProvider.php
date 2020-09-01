@@ -2,20 +2,12 @@
 
 namespace App\Providers;
 
+use Appstract\Opcache\OpcacheServiceProvider;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Telescope\TelescopeServiceProvider as TelescopeServiceProviderBase;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
-
     /**
      * Register any application services.
      *
@@ -23,12 +15,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-       // var_dump($this->app->isProduction());
+        if ($this->app->isProduction()) {
+            $this->app->register(OpcacheServiceProvider::class);
+        }
+
         if ($this->app->isLocal()) {
-            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProviderBase::class);
             $this->app->register(TelescopeServiceProvider::class);
-        } else {
-            $this->app->register(\Appstract\Opcache\OpcacheServiceProvider::class);
         }
     }
 }

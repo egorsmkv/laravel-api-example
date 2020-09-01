@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Lucid\Foundation\Http\Controller;
 
 class AuthController extends Controller
@@ -19,13 +20,15 @@ class AuthController extends Controller
     /**
      * Get a JWT via given credentials.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function login()
     {
         $credentials = request(['email', 'password']);
 
-        if (! $token = auth()->attempt($credentials)) {
+        $token = auth()->attempt($credentials);
+
+        if (!$token) {
             return app()->call('App\Http\Controllers\ErrorsController@loginRequired');
         }
 
@@ -35,7 +38,7 @@ class AuthController extends Controller
     /**
      * Log the user out (Invalidate the token).
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function logout()
     {
@@ -47,26 +50,30 @@ class AuthController extends Controller
     /**
      * Refresh a token.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function refresh()
     {
+        /** @noinspection PhpPossiblePolymorphicInvocationInspection */
         return $this->respondWithToken(auth()->refresh());
     }
 
     /**
      * Get the token array structure.
      *
-     * @param  string $token
+     * @param mixed $token
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     protected function respondWithToken($token)
     {
+        // TTL is one hour
+        $ttl = 3600;
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => $ttl
         ]);
     }
 }

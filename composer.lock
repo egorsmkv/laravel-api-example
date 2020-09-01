@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "caddb8778af59a492583c0e14a0e889c",
+    "content-hash": "9af251c748a01124305b35aa8d357201",
     "packages": [
         {
             "name": "appstract/laravel-meta",
@@ -2210,6 +2210,60 @@
             ],
             "description": "The Foundation of the Lucid Architecture project for Laravel",
             "time": "2019-08-27T09:08:58+00:00"
+        },
+        {
+            "name": "lukasoppermann/http-status",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lukasoppermann/http-status.git",
+                "reference": "c123b3844d1dafb94ef6efc08ea6a14c27a02cc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lukasoppermann/http-status/zipball/c123b3844d1dafb94ef6efc08ea6a14c27a02cc4",
+                "reference": "c123b3844d1dafb94ef6efc08ea6a14c27a02cc4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.10",
+                "league/csv": "^7.1",
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "^0.6.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lukasoppermann\\Httpstatus\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lukas Oppermann",
+                    "email": "lukas@vea.re",
+                    "homepage": "http://vea.re",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A minimal package for working with HTTP statuses.",
+            "homepage": "https://github.com/lukasoppermann/http-status",
+            "keywords": [
+                "httpstatus",
+                "status codes"
+            ],
+            "time": "2016-10-19T09:02:03+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -7488,16 +7542,16 @@
         },
         {
             "name": "imanghafoori/laravel-microscope",
-            "version": "v1.0.119",
+            "version": "v1.0.120",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imanghafoori1/laravel-microscope.git",
-                "reference": "14f12520c44ae87138aaa4188fe6b51d1b639dfc"
+                "reference": "b087c6c5e47279aa660c7a9bd54a41b0b7c442a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imanghafoori1/laravel-microscope/zipball/14f12520c44ae87138aaa4188fe6b51d1b639dfc",
-                "reference": "14f12520c44ae87138aaa4188fe6b51d1b639dfc",
+                "url": "https://api.github.com/repos/imanghafoori1/laravel-microscope/zipball/b087c6c5e47279aa660c7a9bd54a41b0b7c442a4",
+                "reference": "b087c6c5e47279aa660c7a9bd54a41b0b7c442a4",
                 "shasum": ""
             },
             "require": {
@@ -7541,7 +7595,7 @@
                 "laravel-microscope",
                 "laravel-testing"
             ],
-            "time": "2020-08-28T01:28:52+00:00"
+            "time": "2020-09-01T13:56:02+00:00"
         },
         {
             "name": "justinrainbow/json-schema",

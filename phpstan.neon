@@ -4,3 +4,5 @@ parameters:
     level: max
     paths:
         - app
+    ignoreErrors:
+    	- '#Parameter \#1 \$job of method Lucid\\Foundation\\Feature::run\(\) expects string, (.*)#'
