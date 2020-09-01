@@ -1,17 +1,18 @@
 <?php
 
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
+
 namespace App\Data\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
 
 /**
  * @property integer $id
  *
  * @property string $title
  *
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  *
  * @package App\Data\Models
  */

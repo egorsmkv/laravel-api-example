@@ -64,6 +64,14 @@ class Handler extends ExceptionHandler
     {
         $requestURI = $request->getRequestUri();
 
+        $parameters = [
+            'data' => [
+                'code' => 500,
+                'message' => $e->getMessage(),
+                'version' => 'unknown'
+            ]
+        ];
+
         if ($e instanceof HttpException) {
             $headers = $e->getHeaders();
             $isBasicHttpAuth = Arr::has($headers, 'WWW-Authenticate');
@@ -85,14 +93,6 @@ class Handler extends ExceptionHandler
             if (Str::startsWith($requestURI, '/api/v1')) {
                 $parameters['data']['version'] = 'v1';
             }
-        } else {
-            $parameters = [
-                'data' => [
-                    'code' => 500,
-                    'message' => $e->getMessage(),
-                    'version' => 'unknown'
-                ]
-            ];
         }
 
         if (config('app.errors_as_json')) {
