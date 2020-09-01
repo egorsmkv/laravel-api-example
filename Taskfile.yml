@@ -32,11 +32,27 @@ tasks:
     cmds:
       - php composer.phar install
 
+  phpcs:
+    cmds:
+      - ./vendor/bin/phpcs ./app/**/**/**/**/*.php
+      - ./vendor/bin/phpcs ./app/**/**/**/*.php
+      - ./vendor/bin/phpcs ./app/**/**/*.php
+      - ./vendor/bin/phpcs ./app/*.php
+      - ./vendor/bin/phpcs ./config/*
+      - ./vendor/bin/phpcs ./public/*
+      - ./vendor/bin/phpcs ./resources/lang/**/*.php
+      - ./vendor/bin/phpcs ./routes/**/*.php
+      - ./vendor/bin/phpcs ./routes/*
+    ignore_error: true
+
   code_style:
     cmds:
       - ./vendor/bin/psalm
+      - ./vendor/bin/phpmd app text phpmd-ruleset.xml
+      - task: phpcs
       - php artisan code:analyse
       - php artisan check:all
+    ignore_error: true
 
   pre_init:
     cmds:
