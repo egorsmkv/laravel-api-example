@@ -3,7 +3,7 @@
 ### Included
 
 - Laravel using Lucid Architecture
-    - Code style checker: Psalm, Larastan, PHPMD, PHP CodeSniffer
+    - Code style checkers: Psalm, Larastan, PHPMD, PHP CodeSniffer
     - Cross-Origin Resource Sharing (CORS)
 - Documentation based on `mkdocs`
 - Swagger
