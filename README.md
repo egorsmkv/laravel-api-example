@@ -15,8 +15,8 @@
 
 ### Useful links
 
-Documentation: http://127.0.0.1:8000/docs/
-Swagger: http://127.0.0.1:8000/api/v1/swagger/
+- Documentation: http://127.0.0.1:8000/docs/
+- Swagger: http://127.0.0.1:8000/api/v1/swagger/
 
 ### Development
 
