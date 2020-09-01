@@ -13,7 +13,6 @@ return [
         base_path('resources'),
         base_path('routes'),
         base_path('storage'),
-        base_path('vendor'),
     ],
     'exclude' => [
         'test',
