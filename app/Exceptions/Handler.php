@@ -38,6 +38,8 @@ class Handler extends ExceptionHandler
      * @param Throwable $exception
      *
      * @return void
+     *
+     * @throws Throwable
      */
     public function report(Throwable $exception)
     {
@@ -83,9 +85,7 @@ class Handler extends ExceptionHandler
             if (Str::startsWith($requestURI, '/api/v1')) {
                 $parameters['data']['version'] = 'v1';
             }
-
-            return app()->call('App\Http\Controllers\ErrorsController@process', $parameters);
-        } else if ($e->getCode() !== 0) {
+        } else {
             $parameters = [
                 'data' => [
                     'code' => 500,
@@ -93,7 +93,9 @@ class Handler extends ExceptionHandler
                     'version' => 'unknown'
                 ]
             ];
+        }
 
+        if (config('app.errors_as_json')) {
             return app()->call('App\Http\Controllers\ErrorsController@process', $parameters);
         }
 
@@ -104,21 +106,27 @@ class Handler extends ExceptionHandler
      * Convert an authentication exception into an unauthenticated response.
      *
      * @param mixed $request
-     * @param AuthenticationException $exception
+     * @param AuthenticationException $e
      *
      * @return mixed
+     *
+     * @throws Throwable
      */
-    protected function unauthenticated($request, AuthenticationException $exception)
+    protected function unauthenticated($request, AuthenticationException $e)
     {
-        $parameters = [
-            'data' => [
-                'code' => 401,
-                'message' => $exception->getMessage(),
-                'url' => $request->getUri(),
-                'version' => 'unknown'
-            ]
-        ];
+        if (config('app.errors_as_json')) {
+            $parameters = [
+                'data' => [
+                    'code' => 401,
+                    'message' => $e->getMessage(),
+                    'url' => $request->getUri(),
+                    'version' => 'unknown'
+                ]
+            ];
 
-        return app()->call('App\Http\Controllers\ErrorsController@process', $parameters);
+            return app()->call('App\Http\Controllers\ErrorsController@process', $parameters);
+        }
+
+        return parent::render($request, $e);
     }
 }

@@ -12,7 +12,14 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'My Application',
+    'name' => 'API Service based on Laravel',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Show errors as JSON response
+    |--------------------------------------------------------------------------
+    */
+    'errors_as_json' => env('SHOW_ERRORS_AS_JSON', false),
 
     /*
     |--------------------------------------------------------------------------

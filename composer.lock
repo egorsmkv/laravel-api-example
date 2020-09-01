@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7264616064b24e9fc5544f738b8e64d",
+    "content-hash": "c6c7b02b13653fedb56586b06a8b26cc",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -4171,16 +4171,16 @@
         },
         {
             "name": "sven/super-basic-auth",
-            "version": "dev-laravel-7",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/svenluijten/super-basic-auth.git",
-                "reference": "3683b7a5679dabc8a10b585c82ee167323f0605d"
+                "reference": "6c4521faefcc8b5f97d42616f99dac838c22f5cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/svenluijten/super-basic-auth/zipball/3683b7a5679dabc8a10b585c82ee167323f0605d",
-                "reference": "3683b7a5679dabc8a10b585c82ee167323f0605d",
+                "url": "https://api.github.com/repos/svenluijten/super-basic-auth/zipball/6c4521faefcc8b5f97d42616f99dac838c22f5cb",
+                "reference": "6c4521faefcc8b5f97d42616f99dac838c22f5cb",
                 "shasum": ""
             },
             "require": {
@@ -4196,11 +4196,7 @@
                     "Sven\\SuperBasicAuth\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Sven\\SuperBasicAuth\\Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4213,19 +4209,15 @@
             ],
             "description": "A lightweight package to add basic authentication to your Laravel app.",
             "keywords": [
+                "Authentication",
                 "auth",
-                "authentication",
                 "basic",
                 "http",
                 "laravel",
                 "password",
                 "user"
             ],
-            "support": {
-                "source": "https://github.com/svenluijten/super-basic-auth/tree/laravel-7",
-                "issues": "https://github.com/svenluijten/super-basic-auth/issues"
-            },
-            "time": "2020-07-25T13:48:23+00:00"
+            "time": "2020-09-01T19:46:51+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -11890,7 +11882,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "sven/super-basic-auth": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,
