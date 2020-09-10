@@ -11,5 +11,5 @@ return [
      | production environment.
      |
      */
-    'dashboard'     => null,
+    'dashboard' => false,
 ];
